@@ -1,0 +1,211 @@
+{
+	"info": {
+		"_postman_id": "9c9f3302-b28d-4ca7-8c0f-0adae56cf98b",
+		"name": "user-controller",
+		"description": "# About this collection\n\nThis collection helps you set up contract tests to ensure that two separate systems are compatible and can communicate with one another.\n\n## **Using the collection**\n\n**Step 1:** Send the sample requests and view the response and test results.\n\n**Step 2:** Replace the sample request URLs with your desired API endpoints.\n\n**Step 3:** Customize the tests in the \"Tests\" tab if needed. Don't forget to save your changes.\n\n### Resources\n\n[Scripting in Postman](https://learning.postman.com/docs/writing-scripts/intro-to-scripts/)\n\n[Test script examples](https://learning.postman.com/docs/writing-scripts/script-references/test-examples/)\n\n[Postman Sandbox API reference](https://learning.postman.com/docs/sending-requests/grpc/postman-sandbox-api/#writing-assertions)\n\n[Using the Collection Runner](https://learning.postman.com/docs/collections/running-collections/intro-to-collection-runs/)\n\n[  \n](https://postman.postman.co/documentation/24552533-5bead607-0197-4e1d-87d4-3160bc7631c1?entity=&branch=&version=)",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "29702296"
+	},
+	"item": [
+		{
+			"name": "Get All Users",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/admin/users",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"admin",
+						"users"
+					]
+				},
+				"description": "The tests in this request validate that:\n\n- the response code is 200\n- the response is a JSON object\n- the response has an 'arg' object\n- the response has 'headers' object\n- the response has a 'URL' property"
+			},
+			"response": []
+		},
+		{
+			"name": "Get 1 User by userId",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/public/users/{{userId}}",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"public",
+						"users",
+						"{{userId}}"
+					]
+				},
+				"description": "The tests in this request validate that:\n\n- the response code is 200\n- the response is a JSON object\n- the response has an 'arg' object\n- the response has 'headers' object\n- the response has a 'URL' property"
+			},
+			"response": []
+		},
+		{
+			"name": "Edit User by userId",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"userId\": 3,\n  \"firstName\": \"Ilman\",\n  \"lastName\": \"Alman\",\n  \"mobileNumber\": \"8111111111\",\n  \"email\": \"admin3@asal.com\",\n  \"password\": \"CobaDaftar_123\",\n  \"roles\": [\n    {\n      \"roleId\": 100,\n      \"roleName\": \"USER\"\n    }\n  ],\n  \"address\": {\n    \"addressId\": 3,\n    \"street\": \"Jalan Cinta\",\n    \"buildingName\": \"rumah\",\n    \"city\": \"Surabaya\",\n    \"state\": \"Jawa Timur\",\n    \"country\": \"Indonesia\",\n    \"pincode\": \"100000\"\n  }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/api/public/users/{{userId}}",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"public",
+						"users",
+						"{{userId}}"
+					]
+				},
+				"description": "This request uses tests to verify both the structure (existence and type of individual properties) and exact values of the response data.\n\nUse `pm.expect(subject)` to wrap test subjects, and [Chai](https://www.chaijs.com/api/bdd/) for assertions."
+			},
+			"response": []
+		},
+		{
+			"name": "Delete User",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJVc2VyIERldGFpbHMiLCJpc3MiOiJFdmVudCBTY2hlZHVsZXIiLCJpYXQiOjE3MzkyODQ5NTIsImVtYWlsIjoiYWRtaW5AZXhhbXBsZS5jb20ifQ.lYfJLEYtS4YZD_xAtu29SoX8OXwx3_BZ_CI0R9akfeg",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/api/admin/users/{{userId}}",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"admin",
+						"users",
+						"{{userId}}"
+					]
+				},
+				"description": "This request uses tests to verify both the structure (existence and type of individual properties) and exact values of the response data.\n\nUse `pm.expect(subject)` to wrap test subjects, and [Chai](https://www.chaijs.com/api/bdd/) for assertions."
+			},
+			"response": []
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "https://postman-echo.com"
+		},
+		{
+			"key": "userId",
+			"value": "",
+			"type": "default"
+		}
+	]
+}

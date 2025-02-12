@@ -1,0 +1,198 @@
+{
+	"info": {
+		"_postman_id": "2eeb911b-d60a-4b66-a27e-e006489c3fac",
+		"name": "category-controller",
+		"description": "# About this collection\n\nThis collection is designed to help you test the performance of your API endpoints with varying sizes of query parameters. The collection contains pre-built requests that simulate large and small query parameters to assess how well your API handles different loads.\n\nUsing this collection, you can identify potential bottlenecks or performance issues in your API, enabling you to optimize and enhance the overall performance.\n\n## **Using the collection**\n\n**Step 1:** Replace the placeholders in the URLs and parameters with your own API base URLs and relevant query parameters.\n\n**Step 2 (optional):** Modify the sizes of the query parameters to reflect your specific use case better. You can create multiple requests with varying parameter sizes to test your API's performance thoroughly.\n\n**Step 3:** Run the collection using Postman's Collection Runner or Postman's Newman CLI tool.\n\n**Step 4:** Analyze the results to identify performance bottlenecks, slow response times, or potential issues with handling large or small query parameters.\n\n## Resources\n\n[Performance Testing](https://learning.postman.com/docs/designing-and-developing-your-api/testing-your-api/introduction-to-performance-testing/)  \n[Postman Collection Runner](https://learning.postman.com/docs/running-collections/intro-to-collection-runs/)  \n[Postman Newman CLI](https://learning.postman.com/docs/running-collections/using-newman-cli/command-line-integration-with-newman/)\n\n[  \n](https://postman.postman.co/documentation/22517504-3302192d-87dd-4612-b381-61894de21203?entity=&branch=&version=)",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "29702296"
+	},
+	"item": [
+		{
+			"name": "Get Category",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/public/categories",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"public",
+						"categories"
+					]
+				},
+				"description": "**Description**  \nThis request is designed to test an API endpoint with a small set of query parameters. By sending this request, you can assess how well your API handles simple requests and analyze its response times and performance under a minimal load.\n\n**Request details**  \nURL: [https://postman-echo.com/get](https://postman-echo.com/get)  \nHTTP Method: GET  \nQuery Parameters:\n\n- foo1: bar1\n- foo2: bar2\n    \n\n**Usage**  \nTo use this request, simply replace the URL with your own API endpoint and modify the query parameters according to your requirements."
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Category",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "({{base_url}}/api/admin/categories/{{categoryId}}",
+					"host": [
+						"({{base_url}}"
+					],
+					"path": [
+						"api",
+						"admin",
+						"categories",
+						"{{categoryId}}"
+					]
+				},
+				"description": "**Description**  \nThis request is designed to test an API endpoint with a small set of query parameters. By sending this request, you can assess how well your API handles simple requests and analyze its response times and performance under a minimal load.\n\n**Request details**  \nURL: [https://postman-echo.com/get](https://postman-echo.com/get)  \nHTTP Method: GET  \nQuery Parameters:\n\n- foo1: bar1\n- foo2: bar2\n    \n\n**Usage**  \nTo use this request, simply replace the URL with your own API endpoint and modify the query parameters according to your requirements."
+			},
+			"response": []
+		},
+		{
+			"name": "Create Category",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJVc2VyIERldGFpbHMiLCJpc3MiOiJFdmVudCBTY2hlZHVsZXIiLCJpYXQiOjE3MzkzNjc4ODMsImVtYWlsIjoiYWRtaW4xQGFzYWwuY29tIn0.OjJrKl7xH7yp5vnBKuu-PR0bOMSrHnmNcYdDvRdRrVU",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"categoryId\": 1,\r\n\"categoryName\": \"Laptops\",\r\n\"products\": []\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/admin/category",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"admin",
+						"category"
+					]
+				},
+				"description": "This request uses tests to verify both the structure (existence and type of individual properties) and exact values of the response data.\n\nUse `pm.expect(subject)` to wrap test subjects, and [Chai](https://www.chaijs.com/api/bdd/) for assertions."
+			},
+			"response": []
+		},
+		{
+			"name": "Edit Category by categoryId",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/api/admin/categories/{{categoryId}}",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"admin",
+						"categories",
+						"{{categoryId}}"
+					]
+				},
+				"description": "This request uses tests to verify both the structure (existence and type of individual properties) and exact values of the response data.\n\nUse `pm.expect(subject)` to wrap test subjects, and [Chai](https://www.chaijs.com/api/bdd/) for assertions."
+			},
+			"response": []
+		}
+	]
+}

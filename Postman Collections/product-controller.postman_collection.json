@@ -1,0 +1,329 @@
+{
+	"info": {
+		"_postman_id": "e8741b70-b395-43c8-a14d-2a153c597a15",
+		"name": "product-controller",
+		"description": "# About this collection\n\nPostman provides dynamic variables that use the [Faker library](https://www.npmjs.com/package/@faker-js/faker) to generate sample data, including random names, addresses, and email addresses.\n\nThis collection demonstrates the use of dynamic variables to create randomized mock data. The examples in this collection utilize various data types and showcase how dynamic variables can help simulate real-world data within your API testing environment.\n\n## Using this collection\n\n**Step 1: Send requests**\n\nSelect a request from the collection, review the request parameters and pre-request scripts, then hit \"Send\" to execute the request.\n\n**Step 2: Review the \"Body\" and \"Pre-request Script\"** **tabs**\n\nUnderstand how dynamic variables are used to generate mock data. Dynamic variables can be used in the request URL and Body, or even as part of a Pre-Request or Test script for more complex use cases (see \"Create mock blog post\" request).\n\n**Step 3: Customize (optional)**\n\nCustomize dynamic variables to better suit your specific use case. Save the changes, and execute the requests.\n\n**Step 4: Analyze responses**\n\nExamine the response body to see the generated mock data. Note that the responses will be different each time you send the request, as the dynamic variables ensure randomized data generation.\n\nEnjoy testing with diverse and dynamic data!\n\n## Resources\n\n[Dynamic variables](https://learning.postman.com/docs/writing-scripts/script-references/variables-list/)",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "29702296"
+	},
+	"item": [
+		{
+			"name": "Create Product",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"productId\": 1,\r\n  \"productName\": \"Laptop Gaming XYZ\",\r\n  \"image\": \"laptop_xyz.jpg\",\r\n  \"description\": \"Laptop gaming dengan performa tinggi.\",\r\n  \"quantity\": 20,\r\n  \"price\": 15000000,\r\n  \"discount\": 10,\r\n  \"specialPrice\": 13500000,\r\n  \"category\": {\r\n    \"categoryId\": 1,\r\n    \"categoryName\": \"Elektronik\",\r\n    \"products\": [\"Laptop Gaming XYZ\"]\r\n  },\r\n  \"products\": []\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/api/admin/categories/{{categoryId}}/product",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"admin",
+						"categories",
+						"{{categoryId}}",
+						"product"
+					]
+				},
+				"description": "This request shows an example of generating mock user data in the request body. You can use this to populate some users for testing your API or application, or to ensure that your API accepts a range of inputs within certain parameters."
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Products By Category",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/public/categories/{{categoryId}}/products",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"public",
+						"categories",
+						"{{categoryId}}",
+						"products"
+					]
+				},
+				"description": "This request shows an example of generating mock user data in the request body. You can use this to populate some users for testing your API or application, or to ensure that your API accepts a range of inputs within certain parameters."
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Products",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/public/products",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"public",
+						"products"
+					]
+				},
+				"description": "This request shows an example of generating mock user data in the request body. You can use this to populate some users for testing your API or application, or to ensure that your API accepts a range of inputs within certain parameters."
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Products by Keyword",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/public/products/keyword/{{keyword}}",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"public",
+						"products",
+						"keyword",
+						"{{keyword}}"
+					]
+				},
+				"description": "This request shows an example of generating mock user data in the request body. You can use this to populate some users for testing your API or application, or to ensure that your API accepts a range of inputs within certain parameters."
+			},
+			"response": []
+		},
+		{
+			"name": "Edit Product by productId",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/api/admin/products/{{productId}}",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"admin",
+						"products",
+						"{{productId}}"
+					]
+				},
+				"description": "This request uses tests to verify both the structure (existence and type of individual properties) and exact values of the response data.\n\nUse `pm.expect(subject)` to wrap test subjects, and [Chai](https://www.chaijs.com/api/bdd/) for assertions."
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Product by productId",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/api/admin/products/{{productId}}",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"admin",
+						"products",
+						"{{productId}}"
+					]
+				},
+				"description": "This request uses tests to verify both the structure (existence and type of individual properties) and exact values of the response data.\n\nUse `pm.expect(subject)` to wrap test subjects, and [Chai](https://www.chaijs.com/api/bdd/) for assertions."
+			},
+			"response": []
+		},
+		{
+			"name": "Edit Product Image by productId Copy",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/api/admin/products/{{productId}}/image",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"admin",
+						"products",
+						"{{productId}}",
+						"image"
+					]
+				},
+				"description": "This request uses tests to verify both the structure (existence and type of individual properties) and exact values of the response data.\n\nUse `pm.expect(subject)` to wrap test subjects, and [Chai](https://www.chaijs.com/api/bdd/) for assertions."
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "https://postman-echo.com"
+		}
+	]
+}

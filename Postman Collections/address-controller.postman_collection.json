@@ -1,0 +1,280 @@
+{
+	"info": {
+		"_postman_id": "ab31d04b-5481-480c-8b80-19cd303e4aba",
+		"name": "address-controller",
+		"description": "[<br>](https://postman.postman.co/documentation/24552533-5bead607-0197-4e1d-87d4-3160bc7631c1?entity=&branch=&version=)",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "29702296"
+	},
+	"item": [
+		{
+			"name": "Create New Address",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"addressId\": 1,\r\n    \"street\": \"Jalan Cinta\",\r\n    \"buildingName\": \"kantor\",\r\n    \"city\": \"Jakarta\",\r\n    \"state\": \"DKI Jakarta\",\r\n    \"country\": \"Indonesia\",\r\n    \"pincode\": \"100000\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/api/admin/address",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"admin",
+						"address"
+					]
+				},
+				"description": "This request uses tests to verify both the structure (existence and type of individual properties) and exact values of the response data.\n\nUse `pm.expect(subject)` to wrap test subjects, and [Chai](https://www.chaijs.com/api/bdd/) for assertions."
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Addresses",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/admin/addresses",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"admin",
+						"addresses"
+					]
+				},
+				"description": "**Description**  \nThis request is designed to test an API endpoint with a small set of query parameters. By sending this request, you can assess how well your API handles simple requests and analyze its response times and performance under a minimal load.\n\n**Request details**  \nURL: [https://postman-echo.com/get](https://postman-echo.com/get)  \nHTTP Method: GET  \nQuery Parameters:\n\n- foo1: bar1\n- foo2: bar2\n    \n\n**Usage**  \nTo use this request, simply replace the URL with your own API endpoint and modify the query parameters according to your requirements."
+			},
+			"response": []
+		},
+		{
+			"name": "Get One Address",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/admin/addresses/{{addressId}}",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"admin",
+						"addresses",
+						"{{addressId}}"
+					]
+				},
+				"description": "**Description**  \nThis request is designed to test an API endpoint with a small set of query parameters. By sending this request, you can assess how well your API handles simple requests and analyze its response times and performance under a minimal load.\n\n**Request details**  \nURL: [https://postman-echo.com/get](https://postman-echo.com/get)  \nHTTP Method: GET  \nQuery Parameters:\n\n- foo1: bar1\n- foo2: bar2\n    \n\n**Usage**  \nTo use this request, simply replace the URL with your own API endpoint and modify the query parameters according to your requirements."
+			},
+			"response": []
+		},
+		{
+			"name": "Edit Address",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/api/admin/addresses/{{addressId}}",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"admin",
+						"addresses",
+						"{{addressId}}"
+					]
+				},
+				"description": "This request uses tests to verify both the structure (existence and type of individual properties) and exact values of the response data.\n\nUse `pm.expect(subject)` to wrap test subjects, and [Chai](https://www.chaijs.com/api/bdd/) for assertions."
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Address",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/api/admin/addresses/{{addressId}}",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"admin",
+						"addresses",
+						"{{addressId}}"
+					]
+				},
+				"description": "This request uses tests to verify both the structure (existence and type of individual properties) and exact values of the response data.\n\nUse `pm.expect(subject)` to wrap test subjects, and [Chai](https://www.chaijs.com/api/bdd/) for assertions."
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "addressId",
+			"value": "",
+			"type": "default"
+		}
+	]
+}

@@ -1,0 +1,119 @@
+{
+	"info": {
+		"_postman_id": "a1e6a66c-a811-430a-93a7-8b754938cd41",
+		"name": "auth-controller",
+		"description": "# About this collection\n\nThis collection helps ensure your API continues to work as expected after updates or changes. It contains sample requests for a series of tests that validate different aspects of an API, including:\n\n1. **Status code verification:** We'll check if the API returns the expected status codes for various requests, ensuring reliability and proper error handling.\n2. **JSON schema verification:** We'll make sure the JSON response conforms to a specified JSON Schema, ensuring API contracts are honored.\n3. **Response time verification:** We'll verify that the API's response time is within the acceptable range, providing a smooth user experience and optimizing performance.\n4. **Response body verification:** We'll validate the structure and content of the response body for accuracy, ensuring the integrity of the data and preventing potential issues downstream.\n5. **Header verification:** We'll confirm the presence and correct values of specific headers in the response, enabling secure and well-structured communication between your app and its users.\n    \n\n## **Using this collection**\n\n**Step 1:** Send the sample requests and view the response and test results.\n\n**Step 2:** Replace the sample request URLs with your desired API endpoints.\n\n**Step 3:** Customize the tests in the \"Tests\" tab if needed. Don't forget to save your changes.\n\n**Step 4:** Run the collection by selecting \"Run\".\n\n### Resources\n\n[Scripting in Postman](https://learning.postman.com/docs/writing-scripts/intro-to-scripts/)\n\n[Test script examples](https://learning.postman.com/docs/writing-scripts/script-references/test-examples/)\n\n[Postman Sandbox API reference](https://learning.postman.com/docs/sending-requests/grpc/postman-sandbox-api/#writing-assertions)\n\n[Using the Collection Runner](https://learning.postman.com/docs/collections/running-collections/intro-to-collection-runs/)",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "29702296"
+	},
+	"item": [
+		{
+			"name": "Register endpoint",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"let response = pm.response.json();",
+							"pm.environment.set(\"token\", response[\"jwt-token\"]);"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"userId\": 1,\r\n  \"firstName\": \"Zaidan\",\r\n  \"lastName\": \"Ilmi\",\r\n  \"mobileNumber\": \"8111111111\",\r\n  \"email\": \"admin1@asal.com\",\r\n  \"password\": \"CobaDaftar_123\",\r\n  \"roles\": [\r\n    {\r\n      \"roleId\": 101,\r\n      \"roleName\": \"ADMIN\"\r\n    }\r\n  ],\r\n  \"address\": {\r\n    \"addressId\": 1,\r\n    \"street\": \"Jalan Cinta\",\r\n    \"buildingName\": \"kantor\",\r\n    \"city\": \"Jakarta\",\r\n    \"state\": \"DKI Jakarta\",\r\n    \"country\": \"Indonesia\",\r\n    \"pincode\": \"100000\"\r\n  }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/api/register",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"register"
+					]
+				},
+				"description": "The test on this request asserts that the reponse has a \"200 OK\" status.\n\nYou can check for any HTTP status code using the same mechanism, for example `pm.response.to.have.status(403)` if your API should return an \"Unauthorized\" response."
+			},
+			"response": []
+		},
+		{
+			"name": "Login endpoint",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"let response = pm.response.json();",
+							"pm.environment.set(\"token\", response[\"jwt-token\"]);"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\": \"admin2@asal.com\",\n    \"password\": \"CobaDaftar_123\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/api/login",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"login"
+					]
+				},
+				"description": "This request uses tests to verify both the structure (existence and type of individual properties) and exact values of the response data.\n\nUse `pm.expect(subject)` to wrap test subjects, and [Chai](https://www.chaijs.com/api/bdd/) for assertions."
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "https://postman-echo.com"
+		}
+	]
+}
