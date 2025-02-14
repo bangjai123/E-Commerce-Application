@@ -30,7 +30,6 @@ public class Payment {
 
 	@NotBlank
 	@Size(min = 4, message = "Payment method must contain atleast 4 characters")
-	@Pattern(regexp = "BBNI|BBCA|BBRI|Mandiri", message = "Payment method harus BBNI, BBCA, BBRI, or Mandiri")
 	private String paymentMethod;
 
 }
