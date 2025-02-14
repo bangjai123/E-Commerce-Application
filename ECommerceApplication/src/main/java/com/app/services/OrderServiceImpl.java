@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import com.app.entites.*;
+import com.app.repositories.*;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -13,23 +15,11 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
-import com.app.entites.Cart;
-import com.app.entites.CartItem;
-import com.app.entites.Order;
-import com.app.entites.OrderItem;
-import com.app.entites.Payment;
-import com.app.entites.Product;
 import com.app.exceptions.APIException;
 import com.app.exceptions.ResourceNotFoundException;
 import com.app.payloads.OrderDTO;
 import com.app.payloads.OrderItemDTO;
 import com.app.payloads.OrderResponse;
-import com.app.repositories.CartItemRepo;
-import com.app.repositories.CartRepo;
-import com.app.repositories.OrderItemRepo;
-import com.app.repositories.OrderRepo;
-import com.app.repositories.PaymentRepo;
-import com.app.repositories.UserRepo;
 
 import jakarta.transaction.Transactional;
 
@@ -45,6 +35,12 @@ public class OrderServiceImpl implements OrderService {
 
 	@Autowired
 	public OrderRepo orderRepo;
+
+	@Autowired
+	public BankRepo bankRepo;
+
+	@Autowired
+	public RekeningRepo rekeningRepo;
 
 	@Autowired
 	private PaymentRepo paymentRepo;
@@ -65,7 +61,18 @@ public class OrderServiceImpl implements OrderService {
 	public ModelMapper modelMapper;
 
 	@Override
-	public OrderDTO placeOrder(String email, Long cartId, String paymentMethod) {
+	public Long placeOrder(String email, Long cartId, String paymentMethod, String namaBank) {
+
+		Bank bankPelanggan = bankRepo.findBankByNamaBank(namaBank);
+		if (bankPelanggan == null){
+			throw new RuntimeException("Gunakan bank yang terdaftar!");
+		}
+
+		Rekening rekeningToko = rekeningRepo.findByBank_NamaBank(namaBank);
+		if (rekeningToko == null) {
+			throw new RuntimeException("Rekening toko untuk bank ini tidak tersedia!");
+		}
+		Long nomorRekeningToko = rekeningToko.getNomorRekening();
 
 		Cart cart = cartRepo.findCartByEmailAndCartId(email, cartId);
 
@@ -127,7 +134,8 @@ public class OrderServiceImpl implements OrderService {
 		
 		orderItems.forEach(item -> orderDTO.getOrderItems().add(modelMapper.map(item, OrderItemDTO.class)));
 
-		return orderDTO;
+
+		return nomorRekeningToko;
 	}
 
 	@Override
