@@ -17,7 +17,7 @@ public class RekeningController {
     @Autowired
     private RekeningService rekeningService;
 
-    @PostMapping
+    @PostMapping("/create")
     public ResponseEntity<RekeningDTO> createRekening(@RequestBody RekeningDTO rekeningDTO) {
         RekeningDTO createdRekening = rekeningService.createRekening(rekeningDTO);
         return new ResponseEntity<>(createdRekening, HttpStatus.CREATED);

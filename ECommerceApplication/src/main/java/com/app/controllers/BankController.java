@@ -17,13 +17,13 @@ public class BankController {
     @Autowired
     private BankService bankService;
 
-    @PostMapping
+    @PostMapping("/create")
     public ResponseEntity<BankDTO> createBank(@RequestBody BankDTO bankDTO) {
         BankDTO createdBank = bankService.createBank(bankDTO);
         return new ResponseEntity<>(createdBank, HttpStatus.CREATED);
     }
 
-    @GetMapping
+    @GetMapping("/all")
     public ResponseEntity<List<BankDTO>> getAllBanks() {
         List<BankDTO> banks = bankService.getAllBanks();
         return new ResponseEntity<>(banks, HttpStatus.OK);
