@@ -28,6 +28,6 @@ public class Rekening {
 
 
     @ManyToOne
-    @JoinColumn(name = "bank_id", nullable = false) // Foreign key dari Bank
+    @JoinColumn(name = "bank_id")
     private Bank bank;
 }

@@ -11,16 +11,16 @@ import com.app.services.RekeningService;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/rekenings")
+@RequestMapping("/api")
 public class RekeningController {
 
     @Autowired
     private RekeningService rekeningService;
 
-    @PostMapping("/create")
+    @PostMapping("/admin/rekening/create")
     public ResponseEntity<RekeningDTO> createRekening(@RequestBody RekeningDTO rekeningDTO) {
         RekeningDTO createdRekening = rekeningService.createRekening(rekeningDTO);
-        return new ResponseEntity<>(createdRekening, HttpStatus.CREATED);
+        return new ResponseEntity<RekeningDTO>(createdRekening, HttpStatus.CREATED);
     }
 
     @GetMapping("/bank/{bankId}")
