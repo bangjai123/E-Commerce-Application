@@ -29,11 +29,11 @@ public class OrderController {
 	public OrderService orderService;
 	
 	@PostMapping("/public/users/{email}/carts/{cartId}/payments/{paymentMethod}/order/{namaBank}")
-	public ResponseEntity<Long> orderProducts(@PathVariable String email, @PathVariable Long cartId, @PathVariable String paymentMethod, @PathVariable String namaBank) {
-		Long rekeningToko = orderService.placeOrder(email, cartId, paymentMethod, namaBank);
+	public ResponseEntity<String> orderProducts(@PathVariable String email, @PathVariable Long cartId, @PathVariable String paymentMethod, @PathVariable String namaBank) {
+		String rekeningToko = orderService.placeOrder(email, cartId, paymentMethod, namaBank);
 
 
-		return new ResponseEntity<Long>(rekeningToko, HttpStatus.CREATED);
+		return new ResponseEntity<String>(rekeningToko, HttpStatus.CREATED);
 	}
 
 	@GetMapping("/admin/orders")

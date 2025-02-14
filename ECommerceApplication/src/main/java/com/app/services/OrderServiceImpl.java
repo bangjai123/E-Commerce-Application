@@ -61,7 +61,7 @@ public class OrderServiceImpl implements OrderService {
 	public ModelMapper modelMapper;
 
 	@Override
-	public Long placeOrder(String email, Long cartId, String paymentMethod, String namaBank) {
+	public String placeOrder(String email, Long cartId, String paymentMethod, String namaBank) {
 
 		Bank bankPelanggan = bankRepo.findBankByNamaBank(namaBank);
 		if (bankPelanggan == null){
@@ -72,7 +72,7 @@ public class OrderServiceImpl implements OrderService {
 		if (rekeningToko == null) {
 			throw new RuntimeException("Rekening toko untuk bank ini tidak tersedia!");
 		}
-		Long nomorRekeningToko = rekeningToko.getNomorRekening();
+		String nomorRekeningToko = rekeningToko.getNomorRekening();
 
 		Cart cart = cartRepo.findCartByEmailAndCartId(email, cartId);
 

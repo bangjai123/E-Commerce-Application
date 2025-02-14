@@ -23,7 +23,7 @@ public class Rekening {
 
     @NotBlank
     @Size(min=10)
-    private Long nomorRekening;
+    private String nomorRekening;
 
 
 
